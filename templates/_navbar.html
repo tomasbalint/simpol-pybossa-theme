@@ -9,9 +9,13 @@
           <a class="brand" href="{{ url_for('home.home') }}"><img src="{{url_for('static',filename='img/' + logo)}}" alt="{{brand}}"></a>
           <div class="nav-collapse collapse">
             <ul class="nav">
+              {% if current_user.admin == 1 %}
               <li {% if active_page == 'community' %} class="active" {% endif %}><a href="{{ url_for('account.index')}}">{{ _('Community') }}</a></li>
+              {% endif %}
               <li {% if active_page == 'applications' %} class="active" {% endif %}><a href="{{ url_for('app.index') }}">{{ _('Projects') }}</a></li>
+              {% if current_user.admin == 1 %}
               <li {% if active_page == 'create' %} class="active" {% endif %}><a href="{{ url_for('app.new') }}">{{ _('Create') }}</a></li>
+              {% endif %}
               <li {% if active_page == 'about' %} class="active" {% endif %}><a href="{{ url_for('home.about')}}">{{ _('About') }}</a></li>
             </ul>
             {% include '_gcs_form.html' ignore missing %}
@@ -20,7 +24,9 @@
               <li {% if active_page == 'profile' %} class="active" {% endif %}><a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="icon icon-user"></i> {{ current_user.name | truncate(6,true) }} <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li><a href="{{ url_for('account.profile', name=current_user.name) }}"><i class="icon icon-user"></i> {{ _('My Profile') }}</a></li>
+                    {% if current_user.admin %}
                     <li><a href="{{ url_for('account.applications', name=current_user.name) }}"><i class="icon icon-th-large"></i> {{ _('My Projects') }}</a></li>
+                    {% endif %}
                     <li><a href="{{ url_for('account.update_profile', name=current_user.name) }}"><i class="icon icon-cog"></i> {{ _('My Settings') }}</a></li>
                     {% if current_user.admin == 1 %}
                     <li class="divider"></li>

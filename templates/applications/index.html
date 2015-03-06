@@ -6,6 +6,7 @@
 {% block content %}
 <script src="{{url_for('static', filename='js/vendor/isotope.pkgd.min.js')}}"></script>
 <div class="row">
+    {% if current_user.admin %}
     <div class="span3">
             <ul data-spy="affix" data-offset-top="200px" class="nav nav-list bs-docs-sidenav affix-top">
                 {% for c in categories %}
@@ -16,6 +17,7 @@
                 {% endif %}
             </ul>
     </div>
+    {% endif %}
     <div class="span9">
             <div id="sorts" class="btn-group pull-right" style="margin-top:12px;">
                 <button class="btn dropdown-toggle" data-toggle="dropdown" data-sort-value="original-order">Order by <span id="order">name</span> <span class="caret"></span></button>

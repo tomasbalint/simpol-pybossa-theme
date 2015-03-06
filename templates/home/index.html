@@ -19,7 +19,7 @@
                     </a>
                 </li>
                 {% endfor %}
-                {% for number in range(18 - categories_apps['featured']|count) %}
+                {% for number in range(6 - categories_apps['featured']|count) %}
                 <li></li>
                 {% endfor %}
             </ul>
@@ -34,10 +34,15 @@
             <p>{{ _('It\'s really simple to start contributing.') }}</p>
           </div>
           <div class="span8">
-              <a href="{{url_for('app.index')}}" class="btn btn-info btn-large"><i class="icon-ok-sign"></i>{{ _(' Start Contributing') }}</a> <a href="{{url_for('app.new')}}" class="btn btn-primary btn-large"><i class="icon-plus-sign"></i> {{ _('Create a Project') }}</a>
+              {% if not current_user.is_authenticated() %}
+              <a href="{{url_for('account.register')}}" class="btn btn-info btn-large"><i class="icon-ok-sign"></i>{{ _(' Register') }}</a>
+              {% else %}
+              <a href="{{url_for('app.index')}}" class="btn btn-info btn-large"><i class="icon-ok-sign"></i>{{ _(' Start Contributing') }}</a>
+              {% endif %}
           </div>
       </section>
-      
+ <!-- sections displayed only to admin -->
+ {% if current_user.admin %} 
       <section>
         <h2><i class="icon-th"></i>{{ _('Most Active Projects') }}</h2>
         <div class="row">
@@ -52,16 +57,6 @@
                 <h3>{{app.name | truncate(20, true)}}</h3>
                 <p>{{app.description | truncate(32, true)}}</p>
                 <p><a href="{{url_for('app.details',short_name=app.short_name)}}" class="btn btn-mini btn-info">Info</a> <a href="{{url_for('app.presenter',short_name=app.short_name)}}" class="btn btn-mini btn-primary">{{ _('Start') }}</a></p>
-            </div>
-          </div>
-          {% endfor %}
-          {% for i in range(4-top_apps|count)%}
-          <div class="span3">
-            <div class="app box">
-                <a href="#" class="image" style="background-image:url({{url_for('static',filename='img/placeholder.project.png')}})"></a>
-                <h3>{{ _('Your project') }}</h3>
-                <p>{{ _('could be here!') }}</p>
-                <p><a href="{{url_for('app.new')}}" class="btn btn-mini btn-primary">{{ _('Create a project') }}</a></p>
             </div>
           </div>
           {% endfor %}
@@ -87,6 +82,8 @@
         </ul>
       </section>
       {% endif %}
+  {% endif %}
+<!-- end of sections displayed only to admin -->
 <script>
 $("a[rel=popover]").popover({
         html: true,

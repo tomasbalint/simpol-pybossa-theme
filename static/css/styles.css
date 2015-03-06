@@ -6,7 +6,8 @@
 /* Styling */
 /* ======= */
 body {
-  color: #484848;
+  color: #4F4E4E;
+  background-color: #f2f2f2;
 }
 h1,
 h2,
@@ -335,7 +336,7 @@ body > footer .container {
 .banner .featured {
   margin: -6px 0px 0px 0px;
   border-left: solid 2px #FFF;
-  height: 309px;
+  height: 103px;
   overflow: hidden;
 }
 .banner .featured li {

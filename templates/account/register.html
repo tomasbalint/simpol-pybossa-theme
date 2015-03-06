@@ -7,8 +7,8 @@
     {{ _('By click the') }} 
     <strong>{{ _('Create account button') }}
     </strong>{{ _('below you are agreeing to the') }}
-    <a target="blank" href={{terms_of_use | safe}}>{{ _('terms of use') }} </a>{{ _('and') }} 
-    <a href={{data_use | safe}}>{{ _('data') }}</a>.
+    <a target="blank" href={{url_for('help.license')}}>{{ _('license information') }} </a>{{ _('and') }} 
+    <a href={{url_for('home.about')}}>{{ _('general conditions') }}</a>.
 </p>
 
   <legend>{{ _('Create an account') }}</legend>
@@ -18,8 +18,10 @@
       {{ render_field(form.fullname, placeholder= _('my full name')) }}
       {{ render_field(form.name, placeholder= _('myusername')) }}
       {{ render_field(form.email_addr, placeholder= _('hello@mywebsite.org')) }}
+      {{ render_field(form.org_type) }}
       {{ render_field(form.password, placeholder= _('my secret password')) }}
       {{ render_field(form.confirm, placeholder= _('my secret password')) }}
+      {{ render_field(form.recaptcha) }}
       <div class="form-actions">
         <input type="submit" value="{{ _('Create an account') }}" class="btn btn-primary btn-large" />
         <input type="reset" value="{{ _('Cancel') }}" class="btn" />

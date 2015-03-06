@@ -12,7 +12,7 @@
             <div class="span9">
                 {{ helper.render_app_title(app, upload_method, subtitle=_('Tasks'))}}
                 <hr>
-                {{ helper.render_overall_progress(app, n_tasks, overall_progress, show_contribute_btn=False, show_n_tasks=True) }}
+                {{ helper.render_overall_progress(app, n_tasks, overall_progress, show_contribute_btn=False, show_n_tasks=True, current_user=current_user) }}
                 <hr>
                 {% if app.owner_id == current_user.id or (current_user.is_authenticated() and current_user.admin)%}
                 <div class="row-fluid">
