@@ -15,7 +15,7 @@
     <div class="span9" style="min-height:400px">
         {{ helper.render_app_title(app, upload_method) }}
         <hr>
-        {{ helper.render_overall_progress(app, n_tasks, overall_progress,current_user=current_user) }}
+        {{ helper.render_overall_progress(app, n_tasks, overall_progress,show_contribute_btn=True,show_n_tasks=False,current_user=current_user) }}
         {% if app.long_description %}
         <hr>
             {{ app.long_description | e | markdown }}
