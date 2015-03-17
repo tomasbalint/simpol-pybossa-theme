@@ -141,7 +141,7 @@
             <p style="margin:0"><strong><i class="icon-user"></i> {{ _('Created by') }}</strong>: {{ app.owner }}</p>
             {% endif %}
             {% if active_cat != "draft" and current_user.is_authenticated() %}
-            <p style="margin:0"><a class="btn btn-primary" href="{{ url_for('app.presenter', short_name = app.short_name) }}"><i class="icon icon-white icon-ok"></i> {{ _('Try it!') }}</a></p>
+            <p style="margin:0"><a class="btn btn-primary" href="{{ url_for('app.details', short_name = app.short_name) }}"><i class="icon icon-white icon-ok"></i> {{ _('Try it!') }}</a></p>
             {% elif not current_user.is_authenticated() %} 
             <p style="margin:0"><a class="btn btn-primary" href="{{ url_for('account.register') }}"><i class="icon icon-white icon-ok"></i> {{ _('Register') }}</a></p>
             {% endif %}
@@ -200,7 +200,7 @@ function imgError(image) {
     <div class="span1"><input type="text" value="{{overall_progress | round |int}}" class="dial"></div>
     <h2><strong> {{_('Overall progress')}}</strong>: {{ overall_progress | round | int }}% {{_('completed')}}
         {% if current_user.is_authenticated()  and show_contribute_btn %}
-        <a href="{{ url_for('app.presenter', short_name=app.short_name)}}" class="btn btn-primary pull-right"><i class="icon-thumbs-up" style="color:white;"></i> {{ _('Start Contributing Now!') }}</a>       
+        <a href="{{ url_for('app.presenter', short_name=app.short_name)}}" class="btn btn-primary pull-right"><i class="icon-thumbs-up" style="color:white;"></i> {{ _('Go to task!') }}</a>       
         {% elif current_user.is_authenticated() and show_n_tasks %}       
          <span class="pull-right"><strong>{{n_tasks}}</strong> {{_('Tasks')}}</span>       
          {% elif not current_user.is_authenticated() %}

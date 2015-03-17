@@ -37,7 +37,7 @@
               {% if not current_user.is_authenticated() %}
               <a href="{{url_for('account.register')}}" class="btn btn-info btn-large"><i class="icon-ok-sign"></i>{{ _(' Register') }}</a>
               {% else %}
-              <a href="{{url_for('app.index')}}" class="btn btn-info btn-large"><i class="icon-ok-sign"></i>{{ _(' Start Contributing') }}</a>
+              <a href="{{url_for('app.details', short_name='greenpaperconsultationsanalysis')}}" class="btn btn-info btn-large"><i class="icon-ok-sign"></i>{{ _(' Start Contributing') }}</a>
               {% endif %}
           </div>
       </section>
